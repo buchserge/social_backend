@@ -25,7 +25,6 @@ public class CommentController {
     public ResponseEntity<Page<Comment>> fetchComments(@RequestParam(defaultValue = "0") int page, @PathVariable long messageId) {
 
         Page<Comment> comments = commentService.getAllCommentsByMessage(messageId, PageRequest.of(page, 5,Sort.by("id").descending()));
-        System.out.println(comments.getContent());
         return ResponseEntity.ok(comments);
     }
 

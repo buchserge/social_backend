@@ -14,5 +14,7 @@ public class MessageDto {
     private String text;
     private String name;
     private Long likeCount;
+    private  UserDto userDto;
     private Set<UserDto> userLikes;
+
 }
