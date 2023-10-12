@@ -10,18 +10,15 @@ import com.buchs.fullstack.repo.UserInfoRepository;
 import com.buchs.fullstack.service.AuthenticationService;
 import com.buchs.fullstack.service.JwtService;
 import com.buchs.fullstack.service.UserInfoService;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -75,21 +72,21 @@ public class AuthAndRegController {
 
     @PostMapping("/addNewUser")
     public String addNewUser(@RequestBody UserInfo userInfo) {
-        System.out.println(userInfo+" USERINFO");
+
         return addUser(userInfo);
     }
 
-    @GetMapping("/user/userProfile")
-    @PreAuthorize("hasAuthority('ROLE_USER')")
-    public String userProfile() {
-        return "Welcome to User Profile";
-    }
-
-    @GetMapping("/admin/adminProfile")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    public String adminProfile() {
-        return "Welcome to Admin Profile";
-    }
+//    @GetMapping("/user/userProfile")
+//    @PreAuthorize("hasAuthority('ROLE_USER')")
+//    public String userProfile() {
+//        return "Welcome to User Profile";
+//    }
+//
+//    @GetMapping("/admin/adminProfile")
+//    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+//    public String adminProfile() {
+//        return "Welcome to Admin Profile";
+//    }
 
     @PostMapping("/generateToken")
     public ResponseEntity<AuthResponse> authenticateAndGetToken(@RequestBody AuthRequest authRequest, HttpServletResponse response) throws IOException {

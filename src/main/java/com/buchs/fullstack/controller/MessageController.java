@@ -59,7 +59,6 @@ public class MessageController {
         msg.setName(msg.getText());
         UserInfo currentUser = userInfoService.getUserByName(principal.getName());
         msg.setUser(currentUser);
-
         messageRepo.save(msg);
     }
 
